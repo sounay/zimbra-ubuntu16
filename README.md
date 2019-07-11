@@ -12,3 +12,9 @@ For Take Backup of zimbra
 > `chmod +x zimbra-backup.sh`
 
 > `./zimbra-backup.sh -a`
+
+SSL Install
+
+> `sudo chmod +x zimbra-ssl.sh
+
+> `sudo ./zimbra-ssl.sh
