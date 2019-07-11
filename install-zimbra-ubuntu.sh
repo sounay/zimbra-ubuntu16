@@ -194,7 +194,7 @@ EOF
 ## Install Zimbra Mail Server
 if [[ `lsb_release -rs` == "16.04" ]]; then
 	echo "Downloading Zimbra Collaboration 8.8.10 for Ubuntu 16.04"
-	wget https://files.zimbra.com/downloads/8.8.10_GA/zcs-8.8.10_GA_3039.UBUNTU16_64.20180928094617.tgz
+	wget https://files.zimbra.com/downloads/8.8.12_GA/zcs-8.8.12_GA_3794.UBUNTU16_64.20190329045002.tgz
 	tar xzvf zcs-*
 	echo "Installing Zimbra Collaboration just the Software"
 	cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
