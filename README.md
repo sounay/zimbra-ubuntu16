@@ -15,6 +15,6 @@ For Take Backup of zimbra
 
 SSL Install
 
-> `sudo chmod +x zimbra-ssl.sh
+> sudo chmod +x zimbra-ssl.sh
 
-> `sudo ./zimbra-ssl.sh
+> sudo ./zimbra-ssl.sh
