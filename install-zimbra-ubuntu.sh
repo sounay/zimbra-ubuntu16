@@ -43,17 +43,17 @@ EOF
 touch /etc/bind/db.$1
 cat <<EOF >/etc/bind/db.$1
 \$TTL  604800
-@      IN      SOA    ns1.$1. root.localhost. (
+@      IN      SOA    $1. root.localhost. (
                                 2        ; Serial
                         604800        ; Refresh
                         86400        ; Retry
                         2419200        ; Expire
                         604800 )      ; Negative Cache TTL
     ;
-    @     IN      NS      ns1.$1.
+    @     IN      NS      $1.
     @     IN      A      $2
-    @     IN      MX     10     $HOSTNAME.$1.
-    $HOSTNAME     IN      A      $2
+    @     IN      MX     10     $1.
+    $1     IN      A      $2
     ns1     IN      A      $2
     mail     IN      A      $2
     pop3     IN      A      $2
@@ -77,7 +77,7 @@ DOCREATEADMIN="yes"
 DOCREATEDOMAIN="yes"
 DOTRAINSA="yes"
 EXPANDMENU="no"
-HOSTNAME="$HOSTNAME.$1"
+HOSTNAME="$1"
 HTTPPORT="8080"
 HTTPPROXY="TRUE"
 HTTPPROXYPORT="80"
@@ -96,7 +96,7 @@ LDAPADMINPASS="$3"
 LDAPREPPASS="$3"
 LDAPBESSEARCHSET="set"
 LDAPDEFAULTSLOADED="1"
-LDAPHOST="$HOSTNAME.$1"
+LDAPHOST="$1"
 LDAPPORT="389"
 LDAPREPLICATIONTYPE="master"
 LDAPSERVERID="2"
@@ -118,12 +118,12 @@ RUNSA="yes"
 RUNVMHA="no"
 SERVICEWEBAPP="yes"
 SMTPDEST="admin@$1"
-SMTPHOST="$HOSTNAME.$1"
+SMTPHOST="$1"
 SMTPNOTIFY="yes"
 SMTPSOURCE="admin@$1"
 SNMPNOTIFY="yes"
-SNMPTRAPHOST="$HOSTNAME.$1"
-SPELLURL="http://$HOSTNAME.$1:7780/aspell.php"
+SNMPTRAPHOST="$1"
+SPELLURL="http://$1:7780/aspell.php"
 STARTSERVERS="yes"
 SYSTEMMEMORY="3.8"
 TRAINSAHAM="ham.$RANDOMHAM@$1"
@@ -138,7 +138,7 @@ ZIMBRA_REQ_SECURITY="yes"
 ldap_bes_searcher_password="$3"
 ldap_dit_base_dn_config="cn=zimbra"
 ldap_nginx_password="$3"
-ldap_url="ldap://$HOSTNAME.$1:389"
+ldap_url="ldap://$1:389"
 mailboxd_directory="/opt/zimbra/mailboxd"
 mailboxd_keystore="/opt/zimbra/mailboxd/etc/keystore"
 mailboxd_keystore_password="$3"
@@ -158,7 +158,7 @@ zimbraFeatureTasksEnabled="Enabled"
 zimbraIPMode="ipv4"
 zimbraMailProxy="FALSE"
 zimbraMtaMyNetworks="127.0.0.0/8 $2/32 [::1]/128 [fe80::]/64"
-zimbraPrefTimeZoneId="America/Los_Angeles"
+zimbraPrefTimeZoneId="Asia/Vientiane"
 zimbraReverseProxyLookupTarget="TRUE"
 zimbraVersionCheckInterval="1d"
 zimbraVersionCheckNotificationEmail="admin@$1"
@@ -167,7 +167,7 @@ zimbraVersionCheckSendNotifications="TRUE"
 zimbraWebProxy="FALSE"
 zimbra_ldap_userdn="uid=zimbra,cn=admins,cn=zimbra"
 zimbra_require_interprocess_security="1"
-zimbra_server_hostname="$HOSTNAME.$1"
+zimbra_server_hostname="$1"
 INSTALL_PACKAGES="zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-memcached zimbra-proxy"
 EOF
 
@@ -218,5 +218,5 @@ su - zimbra -c 'zmcontrol restart'
 cat <(crontab -l) <(echo "@reboot su - zimbra -c 'zmcontrol start'") | crontab -
 
 echo "You can access now to your Zimbra Collaboration Server"
-echo "Admin Console: https://"$2":7071"
-echo "Web Client: https://"$2
+echo "Admin Console: https://"$1":7071"
+echo "Web Client: https://"$1
