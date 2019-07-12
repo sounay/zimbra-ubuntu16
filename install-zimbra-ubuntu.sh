@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 # Zimbra mail server installation in Ubuntu 14.04 and 16.04
-# Author: Subhash (serverkaka.com)
+# Author: Sounay (hosting4lao.com)
 
 # Check if running as root
 if [ "$(id -u)" != "0" ]; then
